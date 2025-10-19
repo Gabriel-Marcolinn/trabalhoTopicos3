@@ -1,5 +1,6 @@
 package com.biblioteca.repository;
 
+import com.biblioteca.entity.Autor;
 import com.biblioteca.entity.Livro;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -25,6 +26,8 @@ public class LivroRepository {
     }
 
     public Long countByDisponivel(Boolean disponivel) {
-        return em.createQuery("select count (l) from Livro l where l.disponivel = :disponivel", Long.class).getSingleResult();
+        return em.createQuery("select count(l) from Livro l where l.disponivel = :disponivel", Long.class)
+                .setParameter("disponivel", disponivel)
+                .getSingleResult();
     }
 }
