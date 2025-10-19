@@ -21,6 +21,11 @@ public class AutorRepository {
         return !autores.isEmpty() ? autores : null;
     }
 
+    public List<Autor> findAllComLivros() {
+        List<Autor> autores = em.createQuery("SELECT DISTINCT a FROM Autor a LEFT JOIN FETCH a.livros", Autor.class).getResultList();
+        return !autores.isEmpty() ? autores : null;
+    }
+
     public Long count () {
         return em.createQuery("select count(a) from Autor a", Long.class).getSingleResult();
     }

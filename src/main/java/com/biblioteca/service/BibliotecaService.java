@@ -8,6 +8,7 @@ import com.biblioteca.repository.EmprestimoRepository;
 import com.biblioteca.repository.LivroRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -23,30 +24,42 @@ public class BibliotecaService {
     @Inject
     private EmprestimoRepository emprestimoRepository;
 
+    @Transactional
     public List<Autor> listarTodosAutores() {
         return autorRepository.findAll();
     }
 
+    @Transactional
+    public List<Autor> listarTodosAutoresComSeusLivros() {
+        return autorRepository.findAllComLivros();
+    }
+
+    @Transactional
     public List<Livro> listarTodosLivros() {
         return livroRepository.findAll();
     }
 
+    @Transactional
     public List<Emprestimo> listarTodosEmprestimos() {
         return emprestimoRepository.findAll();
     }
 
+    @Transactional
     public Long contarTotalLivros() {
         return livroRepository.count();
     }
 
+    @Transactional
     public Long contarLivrosDisponiveis() {
         return livroRepository.countByDisponivel(true);
     }
 
+    @Transactional
     public Long contarEmprestimosAtivos() {
         return emprestimoRepository.countAtivos();
     }
 
+    @Transactional
     public Long contarTotalAutores() {
         return autorRepository.count();
     }

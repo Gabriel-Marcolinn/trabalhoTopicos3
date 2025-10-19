@@ -36,7 +36,7 @@ public class BibliotecaBean implements Serializable {
 
     private void carregarDados() {
         try {
-            autores = bibliotecaService.listarTodosAutores();
+            autores = bibliotecaService.listarTodosAutoresComSeusLivros();
             livros = bibliotecaService.listarTodosLivros();
             emprestimos = bibliotecaService.listarTodosEmprestimos();
         } catch (Exception e) {
