@@ -20,11 +20,11 @@ public class LivroRepository {
         return !livros.isEmpty() ? livros : null;
     }
 
-    public Integer count() {
-        return em.createQuery("select count(l) from Livro l", Integer.class).getSingleResult();
+    public Long count() {
+        return em.createQuery("select count(l) from Livro l", Long.class).getSingleResult();
     }
 
-    public Integer countByDisponivel(Boolean disponivel) {
-        return em.createQuery("select count (l) from Livro l where l.disponivel = :disponivel", Integer.class).getSingleResult();
+    public Long countByDisponivel(Boolean disponivel) {
+        return em.createQuery("select count (l) from Livro l where l.disponivel = :disponivel", Long.class).getSingleResult();
     }
 }

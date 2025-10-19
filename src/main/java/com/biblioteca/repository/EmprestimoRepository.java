@@ -25,11 +25,11 @@ public class EmprestimoRepository {
         return !emprestimos.isEmpty() ? emprestimos : null;
     }
 
-    public Integer count() {
-        return em.createQuery("select count(e) from Emprestimo e", Integer.class).getSingleResult();
+    public Long count() {
+        return em.createQuery("select count(e) from Emprestimo e", Long.class).getSingleResult();
     }
 
-    public Integer countAtivos() {
-        return em.createQuery("SELECT COUNT(e) FROM Emprestimo e WHERE e.dataDevolucao IS NULL", Integer.class).getSingleResult();
+    public Long countAtivos() {
+        return em.createQuery("SELECT COUNT(e) FROM Emprestimo e WHERE e.dataDevolucao IS NULL", Long.class).getSingleResult();
     }
 }

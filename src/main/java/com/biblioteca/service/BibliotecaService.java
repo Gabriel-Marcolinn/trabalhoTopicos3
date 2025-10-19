@@ -35,19 +35,19 @@ public class BibliotecaService {
         return emprestimoRepository.findAll();
     }
 
-    public Integer contarTotalLivros() {
+    public Long contarTotalLivros() {
         return livroRepository.count();
     }
 
-    public Integer contarLivrosDisponiveis() {
+    public Long contarLivrosDisponiveis() {
         return livroRepository.countByDisponivel(true);
     }
 
-    public Integer contarEmprestimosAtivos() {
+    public Long contarEmprestimosAtivos() {
         return emprestimoRepository.countAtivos();
     }
 
-    public Integer contarTotalAutores() {
+    public Long contarTotalAutores() {
         return autorRepository.count();
     }
 }

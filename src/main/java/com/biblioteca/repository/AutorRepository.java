@@ -21,7 +21,7 @@ public class AutorRepository {
         return !autores.isEmpty() ? autores : null;
     }
 
-    public Integer count () {
-        return em.createQuery("select count(a) from Autor a", Integer.class).getSingleResult();
+    public Long count () {
+        return em.createQuery("select count(a) from Autor a", Long.class).getSingleResult();
     }
 }
