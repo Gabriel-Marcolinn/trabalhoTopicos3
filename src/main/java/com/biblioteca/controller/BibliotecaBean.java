@@ -16,6 +16,7 @@ import java.util.List;
 @ViewScoped
 public class BibliotecaBean implements Serializable {
 
+    // Variáveis privadas
     @Inject
     private BibliotecaService bibliotecaService;
 
@@ -28,11 +29,14 @@ public class BibliotecaBean implements Serializable {
     private Long emprestimosAtivosCount;
     private Long totalAutores;
 
+    // Inicializa os dados, pós construção da tela
     @PostConstruct
     public void init() {
         carregarDados();
         carregarEstatisticas();
     }
+
+    // Métodos privados
 
     private void carregarDados() {
         try {
@@ -54,6 +58,8 @@ public class BibliotecaBean implements Serializable {
             System.out.println("Erro ao carregar estisticas: " + e.getMessage());
         }
     }
+
+    // Métodos públicos
 
     public List<Autor> getAutores() {
         return autores;

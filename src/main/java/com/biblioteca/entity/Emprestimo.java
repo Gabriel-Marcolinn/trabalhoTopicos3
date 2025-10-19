@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Table(name = "emprestimos")
 public class Emprestimo {
 
+    // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +32,7 @@ public class Emprestimo {
     @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
 
+    // Construtores
     public Emprestimo() {}
 
     public Emprestimo(String nomeUsuario, String emailUsuario, Livro livro) {
@@ -39,6 +41,7 @@ public class Emprestimo {
         this.livro = livro;
     }
 
+    // Getters e Setters
     public String getNomeUsuario() {
         return nomeUsuario;
     }
@@ -87,6 +90,7 @@ public class Emprestimo {
         this.livro = livro;
     }
 
+    // Método de negócio
     public Boolean isAtivo() {
         return this.dataDevolucao == null;
     }

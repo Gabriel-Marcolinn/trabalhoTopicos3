@@ -15,6 +15,7 @@ import java.util.List;
 @ApplicationScoped
 public class BibliotecaService {
 
+    // Variáveis
     @Inject
     private AutorRepository autorRepository;
 
@@ -29,6 +30,9 @@ public class BibliotecaService {
         return autorRepository.findAll();
     }
 
+    // Métodos
+
+    // Método criado para poder ser transacional a chamada do autores.livros.size() na view
     @Transactional
     public List<Autor> listarTodosAutoresComSeusLivros() {
         return autorRepository.findAllComLivros();

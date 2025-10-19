@@ -10,6 +10,7 @@ import java.util.List;
 @Table (name="autores")
 public class Autor {
 
+    // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,6 +30,7 @@ public class Autor {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Livro> livros = new ArrayList<Livro>();
 
+    // construtores
     public Autor() {
     }
 
@@ -37,6 +39,7 @@ public class Autor {
         this.email = email;
     }
 
+    // getters e setters
     public String getNome() {
         return nome;
     }

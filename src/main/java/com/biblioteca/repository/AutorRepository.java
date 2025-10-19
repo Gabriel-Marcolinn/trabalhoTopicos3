@@ -21,6 +21,7 @@ public class AutorRepository {
         return !autores.isEmpty() ? autores : null;
     }
 
+    // Método criado para poder ser transacional a chamada do autores.livros.size() na view
     public List<Autor> findAllComLivros() {
         List<Autor> autores = em.createQuery("SELECT DISTINCT a FROM Autor a LEFT JOIN FETCH a.livros", Autor.class).getResultList();
         return !autores.isEmpty() ? autores : null;
