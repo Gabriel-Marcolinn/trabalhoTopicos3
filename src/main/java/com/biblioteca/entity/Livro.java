@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="livros")
@@ -33,7 +34,7 @@ public class Livro {
     private Autor autor;
 
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
+    private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 
     public Livro() {}
 
@@ -91,11 +92,11 @@ public class Livro {
         this.autor = autor;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
+    public List<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 
-    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
         this.emprestimos = emprestimos;
     }
 }

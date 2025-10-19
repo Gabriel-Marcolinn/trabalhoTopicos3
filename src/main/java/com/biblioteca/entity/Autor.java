@@ -27,7 +27,7 @@ public class Autor {
     private String biografia;
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ArrayList<Livro> livros = new ArrayList<Livro>();
+    private List<Livro> livros = new ArrayList<Livro>();
 
     public Autor() {
     }
@@ -69,11 +69,11 @@ public class Autor {
         this.biografia = biografia;
     }
 
-    public ArrayList<Livro> getLivros() {
+    public List<Livro> getLivros() {
         return livros;
     }
 
-    public void setLivros(ArrayList<Livro> livros) {
+    public void setLivros(List<Livro> livros) {
         this.livros = livros;
     }
 }
