@@ -14,3 +14,18 @@ INSERT INTO livros (titulo, isbn, datapublicacao, numeropaginas, disponivel, aut
 INSERT INTO emprestimos (nomeusuario, emailusuario, dataemprestimo, datadevolucaoprevista, livro_id) VALUES
                                                                                                               ('João Santos', 'joao@email.com', '2024-11-10', '2024-11-24', 2),
                                                                                                               ('Ana Costa', 'ana@email.com', '2024-11-15', '2024-11-29', 3);
+
+
+INSERT INTO usuarios (nome_usuario, senha, email)
+VALUES ('admin', '$2a$10$ceaP0MtVNXTY..qTm2FMMevN6F.hoPhGNACzFnTGL4Bk8YcVAquf6', 'admin@gmail.com');
+
+INSERT INTO usuarios (nome_usuario, senha, email)
+VALUES ('user', '$2a$12$1M40Ob1s9SRQMC39dsyZf.QbwgvrzhFRDI7i6Ui3WYiwbXaCxin12', 'user@gmail.com');
+
+INSERT INTO usuarios_roles (usuario_id, role)
+VALUES ((SELECT id FROM usuarios WHERE nome_usuario = 'admin'), 'ADMIN');
+INSERT INTO usuarios_roles (usuario_id, role)
+VALUES ((SELECT id FROM usuarios WHERE nome_usuario = 'admin'), 'USUARIO');
+
+INSERT INTO usuarios_roles (usuario_id, role)
+VALUES ((SELECT id FROM usuarios WHERE nome_usuario = 'user'), 'USUARIO');

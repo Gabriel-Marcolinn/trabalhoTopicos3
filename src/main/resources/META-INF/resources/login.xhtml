@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+    <h3>Biblioteca Digital - Login</h3>
+
+    <h:form>
+
+        <h:panelGroup rendered="#{not empty facesContext.messageList}">
+            <h:messages globalOnly="true" />
+        </h:panelGroup>
+
+        <p:messages id="messages" showDetail="true" closable="true" />
+
+        <div class="card">
+            <p:panelGrid columns="2">
+                <p:outputLabel for="usuario" value="Usuário"/>
+                <p:inputText id="usuario" value="#{loginController.usuario}"/>
+
+                <p:outputLabel for="senha" value="Senha"/>
+                <p:inputText id="senha" value="#{loginController.senha}"/>
+            </p:panelGrid>
+        </div>
+        <h:commandButton value="Entrar" action="#{loginController.login}" />
+    </h:form>
+
+</h:body>
+</html>
