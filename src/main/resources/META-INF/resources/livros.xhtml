@@ -6,11 +6,23 @@
       xmlns:p="primefaces">
 
 <ui:composition template="templates/template.xhtml">
-    <ui:define name="title">Dashboard</ui:define>
+    <ui:define name="title">Listagem de Livros</ui:define>
     <ui:define name="content">
         <h:form>
-            <div>
-                <p:dataTable value="#{bibliotecaBean.livros}" var="livro" responsiveLayout="scroll" rowHover="true">
+
+            <div class="card" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                <h2>Acervo Bibliográfico</h2>
+
+                <p:button value="Novo Livro"
+                          icon="pi pi-plus"
+                          outcome="/admin/cadastro.xhtml"
+                          styleClass="ui-button-success"
+                          rendered="#{loginController.hasRole('ADMIN')}" />
+            </div>
+
+            <div class="card">
+                <p:dataTable value="#{bibliotecaBean.livros}" var="livro" responsiveLayout="scroll" rowHover="true"
+                             paginator="true" rows="10" paginatorPosition="bottom">
 
                     <p:column headerText="Titulo" sortBy="#{livro.titulo}" filterBy="#{livro.titulo}" filterMatchMode="contains">
                         <h:outputText value="#{livro.titulo}" />

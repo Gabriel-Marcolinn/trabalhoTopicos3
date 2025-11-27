@@ -164,17 +164,32 @@
             background-color: #0a9396;
             color: white;
         }
+
+        .btnlogout {
+            text-align: right;
+        }
     </style>
 </h:head>
 
 <h:body>
     <div id="header">
         <h1>📚 Sistema de Biblioteca Digital</h1>
+
+        <p style="color: #0a9396; text-align:right; padding-right:20px;">
+            Usuário: #{loginController.username}
+        </p>
+
+        <h:form>
+            <div class="btnlogout">
+                <h:commandButton value="Logout" action="#{logoutController.logout}" style="background-color:red;align-items: center;padding-right: 20px;color: white"/>
+            </div>
+        </h:form>
+
         <div class="app-navbar">
             <p:menubar hideDelay="1000">
-                <p:menuitem value="Dashboard" outcome="index.xhtml" icon="pi pi-home"/>
-                <p:menuitem value="Livros" outcome="livros.xhtml" icon="pi pi-book"/>
-                <p:menuitem value="Autores" outcome="autores.xhtml" icon="pi pi-users"/>
+                <p:menuitem value="Dashboard" outcome="/index.xhtml" icon="pi pi-home"/>
+                <p:menuitem value="Livros" outcome="/livros.xhtml" icon="pi pi-book"/>
+                <p:menuitem value="Autores" outcome="/autores.xhtml" icon="pi pi-users"/>
             </p:menubar>
         </div>
     </div>
