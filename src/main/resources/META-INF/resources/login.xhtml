@@ -3,31 +3,93 @@
       xmlns:h="jakarta.faces.html"
       xmlns:f="jakarta.faces.core"
       xmlns:p="http://primefaces.org/ui">
+
 <h:head>
+    <title>Login - Biblioteca Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <style>
+        /* Centraliza tudo na tela e coloca um fundo cinza suave */
+        body {
+            background-color: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo do Card de Login */
+        .login-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-title {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Ajustes para os inputs ocuparem 100% da largura no ui-fluid */
+        .field {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+    </style>
 </h:head>
+
 <h:body>
-    <h3>Biblioteca Digital - Login</h3>
 
-    <h:form>
+    <div class="login-card">
 
-        <h:panelGroup rendered="#{not empty facesContext.messageList}">
-            <h:messages globalOnly="true" />
-        </h:panelGroup>
+        <i class="pi pi-book" style="font-size: 2.5rem; color: #2196F3; margin-bottom: 10px;"></i>
 
-        <p:messages id="messages" showDetail="true" closable="true" />
+        <h3 class="login-title">Biblioteca Digital</h3>
 
-        <div class="card">
-            <p:panelGrid columns="2">
-                <p:outputLabel for="usuario" value="Usuário"/>
-                <p:inputText id="usuario" value="#{loginController.usuario}"/>
+        <h:form id="loginForm">
 
-                <p:outputLabel for="senha" value="Senha"/>
-                <p:inputText id="senha" value="#{loginController.senha}"/>
-            </p:panelGrid>
-        </div>
-        <h:commandButton value="Entrar" action="#{loginController.login}" />
-    </h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+
+            <div class="ui-fluid">
+
+                <div class="field">
+                    <p:outputLabel for="usuario" value="Usuário" style="font-weight: bold;"/>
+                    <p:inputText id="usuario" value="#{loginController.usuario}"
+                                 required="true" requiredMessage="Informe o usuário"
+                                 placeholder="Digite seu usuário" />
+                </div>
+
+                <div class="field">
+                    <p:outputLabel for="senha" value="Senha" style="font-weight: bold;"/>
+                    <p:password id="senha" value="#{loginController.senha}"
+                                required="true" requiredMessage="Informe a senha"
+                                placeholder="Digite sua senha" toggleMask="true"/>
+                </div>
+
+                <div class="field">
+                    <p:commandButton value="Entrar"
+                                     action="#{loginController.login}"
+                                     icon="pi pi-sign-in"
+                                     styleClass="ui-button-primary full-width"
+                                     update="@form"/>
+                </div>
+            </div>
+        </h:form>
+    </div>
 
 </h:body>
 </html>
