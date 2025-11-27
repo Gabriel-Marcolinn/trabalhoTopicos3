@@ -24,8 +24,6 @@ VALUES ('user', '$2a$12$1M40Ob1s9SRQMC39dsyZf.QbwgvrzhFRDI7i6Ui3WYiwbXaCxin12', 
 
 INSERT INTO usuarios_roles (usuario_id, role)
 VALUES ((SELECT id FROM usuarios WHERE nome_usuario = 'admin'), 'ADMIN');
-INSERT INTO usuarios_roles (usuario_id, role)
-VALUES ((SELECT id FROM usuarios WHERE nome_usuario = 'admin'), 'USUARIO');
 
 INSERT INTO usuarios_roles (usuario_id, role)
 VALUES ((SELECT id FROM usuarios WHERE nome_usuario = 'user'), 'USUARIO');

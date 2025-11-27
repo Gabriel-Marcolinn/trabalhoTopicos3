@@ -9,6 +9,9 @@
     <ui:define name="title">Listagem de Livros</ui:define>
     <ui:define name="content">
         <h:form>
+            <p:messages id="msgs" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
 
             <div class="card" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
                 <h2>Acervo Bibliográfico</h2>
@@ -50,8 +53,32 @@
                         <h:outputText value="#{livro.disponivel ? 'Disponível' : 'Emprestado'}" />
                     </p:column>
 
+                    <p:column headerText="Ações" style="text-align: center; width: 140px;">
+                        <p:commandButton value="Emprestar"
+                                         icon="pi pi-book"
+                                         styleClass="ui-button-warning"
+                                         action="#{emprestimoBean.realizarEmprestimo(livro)}"
+                                         update="@form"
+                                         rendered="#{livro.disponivel and loginController.hasRole('USUARIO')}">
+
+                            <p:confirm header="Confirmar"
+                                       message="Confirmar empréstimo?"
+                                       icon="pi pi-exclamation-triangle"/>
+                        </p:commandButton>
+
+                        <h:outputText value="Indisponível"
+                                      rendered="#{!livro.disponivel}"
+                                      style="color: red; font-size: 0.9em;"/>
+                    </p:column>
+
                 </p:dataTable>
             </div>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+            </p:confirmDialog>
+
         </h:form>
     </ui:define>
 </ui:composition>
